@@ -40,10 +40,7 @@ public class Customer {
 			Rental each = rentals.next();
 			// determine amounts for each line
 			thisAmount = each.amountFort(thisAmount);
-			
-			// add frequent renter points
-			frequentRenterPoints++;
-			// add bonus for a two day new release rental
+		
 			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
 			// show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t"
@@ -51,6 +48,11 @@ public class Customer {
 			totalAmount += thisAmount;
 		}
 		// add footer lines
+		result = addFooter(totalAmount, frequentRenterPoints, result);
+		return result;
+	}
+
+	protected String addFooter(double totalAmount, int frequentRenterPoints, String result) {
 		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
 		result += "You earned " + String.valueOf(frequentRenterPoints)
 				+ " frequent renter points";
