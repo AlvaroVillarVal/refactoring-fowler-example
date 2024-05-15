@@ -27,7 +27,8 @@ public class Rental {
 		return _movie;
 	}
 
-	protected double amountFort(double thisAmount) {
+	protected double getCharge() {
+		double thisAmount = 0;
 		switch (getMovie().getPriceCode()) {
 		case Movie.REGULAR:
 			thisAmount += 2;
@@ -46,14 +47,24 @@ public class Rental {
 		return thisAmount;
 	}
 
-	protected int frecuentPointCounter(int frequentRenterPoints) {
-		// add frequent renter points		
+	protected int frecuentPointCounter(int frequentRenterPoints) {	
 		frequentRenterPoints++;
-		// add bonus for a two day new release rental
 		if ((getMovie().getPriceCode() == Movie.NEW_RELEASE)
 				&& getDaysRented() > 1)
 			frequentRenterPoints++;
 		return frequentRenterPoints;
+	}
+	
+	public String showFigures(double thisAmount, boolean html) {
+		String result = "";
+		if (html) {
+			result += _movie.getTitle() + ": "
+					+ String.valueOf(thisAmount) + "<br>";
+			return result;
+		}
+		result += "\t" + _movie.getTitle() + "\t"
+				+ String.valueOf(thisAmount) + "\n";
+		return result;
 	}
 
 }

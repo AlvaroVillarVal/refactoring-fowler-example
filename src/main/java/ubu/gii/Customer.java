@@ -31,6 +31,7 @@ public class Customer {
 	};
 
 	public String statement() {
+		boolean html = false;
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
 		Iterator<Rental> rentals = _rentals.iterator();
@@ -38,24 +39,50 @@ public class Customer {
 		while (rentals.hasNext()) {
 			double thisAmount = 0;
 			Rental each = rentals.next();
-			// determine amounts for each line
-			thisAmount = each.amountFort(thisAmount);
+
+			thisAmount = each.getCharge();
 		
 			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
-			// show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t"
-					+ String.valueOf(thisAmount) + "\n";
+
+			result += each.showFigures(thisAmount, html);
 			totalAmount += thisAmount;
 		}
-		// add footer lines
-		result = addFooter(totalAmount, frequentRenterPoints, result);
+		result += addFooter(totalAmount, frequentRenterPoints, html);
 		return result;
 	}
 
-	protected String addFooter(double totalAmount, int frequentRenterPoints, String result) {
+	public String htmlStatement() {
+		boolean html = true;
+		double totalAmount = 0;
+		int frequentRenterPoints = 0;
+		Iterator<Rental> rentals = _rentals.iterator();
+		String result = "<h1>Rental Record for " + getName() + "</h1>";
+		while (rentals.hasNext()) {
+			double thisAmount = 0;
+			Rental each = rentals.next();
+			thisAmount = each.getCharge();
+
+			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
+			result += each.showFigures(thisAmount, html);
+			totalAmount += thisAmount;
+		}
+		result += addFooter(totalAmount, frequentRenterPoints, html);
+		return result;
+	}
+
+	private String addFooter(double totalAmount, int frequentRenterPoints, boolean html) {
+		String result = "";
+		if (html) {
+			result += "<p>Amount owed is " + String.valueOf(totalAmount) + "<br>";
+			result += "You earned " + String.valueOf(frequentRenterPoints)
+					+ " frequent renter points</p>";
+			return result;
+		}
 		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
 		result += "You earned " + String.valueOf(frequentRenterPoints)
 				+ " frequent renter points";
 		return result;
 	}
+	
+	
 }
