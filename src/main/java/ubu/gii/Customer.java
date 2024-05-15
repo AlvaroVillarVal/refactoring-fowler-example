@@ -31,6 +31,7 @@ public class Customer {
 	};
 
 	public String statement() {
+		boolean html = false;
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
 		Iterator<Rental> rentals = _rentals.iterator();
@@ -43,19 +44,49 @@ public class Customer {
 		
 			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
 			// show figures for this rental
-			result += each.showFigures(thisAmount);
+			result += each.showFigures(thisAmount, html);
 			totalAmount += thisAmount;
 		}
 		// add footer lines
-		result += addFooter(totalAmount, frequentRenterPoints);
+		result += addFooter(totalAmount, frequentRenterPoints, html);
 		return result;
 	}
 
-	private String addFooter(double totalAmount, int frequentRenterPoints) {
+	public String htmlStatement() {
+		boolean html = true;
+		double totalAmount = 0;
+		int frequentRenterPoints = 0;
+		Iterator<Rental> rentals = _rentals.iterator();
+		String result = "<h1>Rental Record for " + getName() + "</h1>";
+		while (rentals.hasNext()) {
+			double thisAmount = 0;
+			Rental each = rentals.next();
+			// determine amounts for each line
+			thisAmount = each.getCharge();
+
+			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
+			// show figures for this rental
+			result += each.showFigures(thisAmount, html);
+			totalAmount += thisAmount;
+		}
+		// add footer lines
+		result += addFooter(totalAmount, frequentRenterPoints, html);
+		return result;
+	}
+
+	private String addFooter(double totalAmount, int frequentRenterPoints, boolean html) {
 		String result = "";
+		if (html) {
+			result += "<p>Amount owed is " + String.valueOf(totalAmount) + "<br>";
+			result += "You earned " + String.valueOf(frequentRenterPoints)
+					+ " frequent renter points</p>";
+			return result;
+		}
 		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
 		result += "You earned " + String.valueOf(frequentRenterPoints)
 				+ " frequent renter points";
 		return result;
 	}
+	
+	
 }
