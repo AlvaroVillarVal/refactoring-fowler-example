@@ -43,16 +43,16 @@ public class Customer {
 		
 			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
 			// show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t"
-					+ String.valueOf(thisAmount) + "\n";
+			result += each.showFigures(thisAmount);
 			totalAmount += thisAmount;
 		}
 		// add footer lines
-		result = addFooter(totalAmount, frequentRenterPoints, result);
+		result += addFooter(totalAmount, frequentRenterPoints);
 		return result;
 	}
 
-	protected String addFooter(double totalAmount, int frequentRenterPoints, String result) {
+	private String addFooter(double totalAmount, int frequentRenterPoints) {
+		String result = "";
 		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
 		result += "You earned " + String.valueOf(frequentRenterPoints)
 				+ " frequent renter points";
