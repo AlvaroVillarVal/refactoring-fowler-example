@@ -39,15 +39,14 @@ public class Customer {
 		while (rentals.hasNext()) {
 			double thisAmount = 0;
 			Rental each = rentals.next();
-			// determine amounts for each line
+
 			thisAmount = each.getCharge();
 		
 			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
-			// show figures for this rental
+
 			result += each.showFigures(thisAmount, html);
 			totalAmount += thisAmount;
 		}
-		// add footer lines
 		result += addFooter(totalAmount, frequentRenterPoints, html);
 		return result;
 	}
@@ -61,15 +60,12 @@ public class Customer {
 		while (rentals.hasNext()) {
 			double thisAmount = 0;
 			Rental each = rentals.next();
-			// determine amounts for each line
 			thisAmount = each.getCharge();
 
 			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
-			// show figures for this rental
 			result += each.showFigures(thisAmount, html);
 			totalAmount += thisAmount;
 		}
-		// add footer lines
 		result += addFooter(totalAmount, frequentRenterPoints, html);
 		return result;
 	}
