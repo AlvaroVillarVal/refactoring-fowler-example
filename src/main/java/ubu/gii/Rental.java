@@ -27,7 +27,8 @@ public class Rental {
 		return _movie;
 	}
 
-	protected double amountFort(double thisAmount) {
+	protected double getCharge() {
+		double thisAmount = 0;
 		switch (getMovie().getPriceCode()) {
 		case Movie.REGULAR:
 			thisAmount += 2;
