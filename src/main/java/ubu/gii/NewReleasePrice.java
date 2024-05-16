@@ -10,13 +10,17 @@ public class NewReleasePrice extends Price{
 
 	public double getCharge(int daysRented) {
 		double thisAmount = 0;
-			thisAmount += daysRented * 3;
+			thisAmount = daysRented * 3;
 			
 		return thisAmount;
 	}
 
-	public int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
-		frequentRenterPoints++;
+	public int frecuentPointCounter(int frequentRenterPoints, int daysRented) {
+		return frecuentPointCounter(daysRented);
+	}
+
+	public int frecuentPointCounter(int daysRented) {	
+		int frequentRenterPoints=1;
 		if ((getPriceCode() == Movie.NEW_RELEASE)
 				&& daysRented > 1)
 			frequentRenterPoints++;
