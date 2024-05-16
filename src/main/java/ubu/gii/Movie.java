@@ -57,11 +57,7 @@ public class Movie {
 
 
 
-	protected int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
-		frequentRenterPoints++;
-		if ((getPriceCode() == Movie.NEW_RELEASE)
-				&& daysRented > 1)
-			frequentRenterPoints++;
-		return frequentRenterPoints;
+	protected int frecuentPointCounter(int frequentRenterPoints, int daysRented) {
+		return _priceCode.frecuentPointCounter(frequentRenterPoints, daysRented);
 	}
 }
