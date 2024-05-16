@@ -42,7 +42,7 @@ public class Customer {
 
 			thisAmount = each.getCharge();
 		
-			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
+			frequentRenterPoints += each.frecuentPointCounter();
 
 			result += each.showFigures(thisAmount, html);
 			totalAmount += thisAmount;
@@ -62,7 +62,7 @@ public class Customer {
 			Rental each = rentals.next();
 			thisAmount = each.getCharge();
 
-			frequentRenterPoints = each.frecuentPointCounter(frequentRenterPoints);
+			frequentRenterPoints += each.frecuentPointCounter();
 			result += each.showFigures(thisAmount, html);
 			totalAmount += thisAmount;
 		}

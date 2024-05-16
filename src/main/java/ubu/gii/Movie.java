@@ -57,7 +57,8 @@ public class Movie {
 
 
 
-	protected int frecuentPointCounter(int frequentRenterPoints, int daysRented) {
-		return _priceCode.frecuentPointCounter(frequentRenterPoints, daysRented);
+
+	protected int frecuentPointCounter(int daysRented) {
+		return _priceCode.frecuentPointCounter(daysRented);
 	}
 }

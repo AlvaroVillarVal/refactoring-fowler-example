@@ -54,7 +54,7 @@ public class VideoClubTest {
 		c1.addRental(r4);
 
 		String salida = c1.statement();
-
+		System.out.println(salida);
 		String salidaEsperada = new String("Rental Record for Manuel\n"
 				+ "\tSky Captain\t15.0\n" + "\tAccion Mutante\t2.0\n"
 				+ "\tHermano Oso\t12.0\n" + "\tDnD Honor entre ladrones\t11.0\n"+"Amount owed is 40.0\n"
