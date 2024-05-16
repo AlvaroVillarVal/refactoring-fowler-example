@@ -36,13 +36,6 @@ public class Movie {
 		return _title;
 	}
 
-	protected double getCharge(Rental rental) {
-		return getCharge(rental.getDaysRented());
-	}
-
-	protected double getCharge(Rental rental, int daysRented) {
-		return getCharge(daysRented);
-	}
 
 	protected double getCharge(int daysRented) {
 		double thisAmount = 0;
@@ -62,5 +55,18 @@ public class Movie {
 			break;
 		}
 		return thisAmount;
+	}
+
+
+	protected int frecuentPointCounter(Rental rental, int frequentRenterPoints, int daysRented) {
+		return frecuentPointCounter(frequentRenterPoints, daysRented);
+	}
+
+	protected int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
+		frequentRenterPoints++;
+		if ((getPriceCode() == Movie.NEW_RELEASE)
+				&& daysRented > 1)
+			frequentRenterPoints++;
+		return frequentRenterPoints;
 	}
 }

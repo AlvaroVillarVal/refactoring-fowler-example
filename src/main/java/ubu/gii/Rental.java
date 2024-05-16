@@ -31,13 +31,10 @@ public class Rental {
 		return _movie.getCharge(getDaysRented());
 	}
 
-	protected int frecuentPointCounter(int frequentRenterPoints) {	
-		frequentRenterPoints++;
-		if ((getMovie().getPriceCode() == Movie.NEW_RELEASE)
-				&& getDaysRented() > 1)
-			frequentRenterPoints++;
-		return frequentRenterPoints;
+	protected int frecuentPointCounter(int frequentRenterPoints) {
+		return _movie.frecuentPointCounter(frequentRenterPoints, getDaysRented());
 	}
+
 	
 	public String showFigures(double thisAmount, boolean html) {
 		String result = "";
