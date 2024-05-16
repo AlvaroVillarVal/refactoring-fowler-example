@@ -16,5 +16,10 @@ public class ChildrenPrice extends Price{
 				thisAmount += (daysRented - 3) * 1.5;
 			return thisAmount;
 	}
+
+	public int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
+		
+		return frequentRenterPoints++;
+	}
 	
 }

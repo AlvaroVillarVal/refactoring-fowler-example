@@ -4,13 +4,5 @@ public abstract class Price {
 	public abstract int getPriceCode();
 
 	public abstract double getCharge(int daysRented);
-
-
-	protected int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
-		frequentRenterPoints++;
-		if ((getPriceCode() == Movie.NEW_RELEASE)
-				&& daysRented > 1)
-			frequentRenterPoints++;
-		return frequentRenterPoints;
-	}
+	public abstract int frecuentPointCounter(int frequentRenterPoints, int daysRented);
 }

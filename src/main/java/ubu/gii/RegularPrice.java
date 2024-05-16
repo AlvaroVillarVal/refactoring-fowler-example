@@ -15,5 +15,9 @@ public class RegularPrice extends Price{
 				thisAmount += (daysRented - 2) * 1.5;
 		return thisAmount;
 	}
+	public int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
+		
+		return frequentRenterPoints++;
+	}
 	
 }

@@ -14,5 +14,13 @@ public class NewReleasePrice extends Price{
 			
 		return thisAmount;
 	}
+
+	public int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
+		frequentRenterPoints++;
+		if ((getPriceCode() == Movie.NEW_RELEASE)
+				&& daysRented > 1)
+			frequentRenterPoints++;
+		return frequentRenterPoints;
+	}
 	
 }
