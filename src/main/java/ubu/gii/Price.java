@@ -5,9 +5,6 @@ public abstract class Price {
 
 	public abstract double getCharge(int daysRented);
 
-	protected int frecuentPointCounter(Movie movie, int frequentRenterPoints, int daysRented) {
-		return frecuentPointCounter(frequentRenterPoints, daysRented);
-	}
 
 	protected int frecuentPointCounter(int frequentRenterPoints, int daysRented) {	
 		frequentRenterPoints++;
