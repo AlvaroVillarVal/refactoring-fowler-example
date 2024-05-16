@@ -51,7 +51,7 @@ public class Movie {
 
 
 	protected double getCharge(int daysRented) {
-		return _priceCode.getCharge(this, daysRented);
+		return _priceCode.getCharge(daysRented);
 	}
 
 
